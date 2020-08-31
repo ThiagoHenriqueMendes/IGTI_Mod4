@@ -467,6 +467,11 @@ app.get('/private', async (_req, _resp, next) => {
   }
 });
 
+
+app.PUT('/aImplementar', async (_req, _resp, next) => {
+
+});
+
 app.use((err, _req, resp, _next) => {
   resp.status(500).send({ error: 'ERRO INTERNO: ' + err.message });
 });
