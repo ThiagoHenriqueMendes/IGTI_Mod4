@@ -17,15 +17,15 @@ import operationRoute from './Routes/operation.js';
 //     console.log('Erro ao conectar no MongoDB - ' + error.message);
 //   }
 // })();
+require('dotenv').config;
 
 const app = express();
 //estamos informando o express que iremos utilizar json
 app.use(express.json());
 app.use('/operation', operationRoute);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('API funcionando');
 });
-
 
 /*comentario*/

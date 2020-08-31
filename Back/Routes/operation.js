@@ -8,11 +8,16 @@ import { isNumber } from 'util';
 const modifiedFile = './Files/ModifiedFile/gradesModified.json';
 const app = express.Router();
 
+require('dotenv').config;
 async function OpenConnection() {
   try {
     console.log('Entrou no OpenConnection');
     await mongoose.connect(
-      'mongodb+srv://igtiUser:Igti2020@igti.mq8zz.mongodb.net/IGTI?retryWrites=true&w=majority',
+      'mongodb+srv://' +
+        process.env.USERDB +
+        ':' +
+        process.env.PWD +
+        '@igti.mq8zz.mongodb.net/IGTI?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -467,10 +472,7 @@ app.get('/private', async (_req, _resp, next) => {
   }
 });
 
-
-app.PUT('/aImplementar', async (_req, _resp, next) => {
-
-});
+app.PUT('/aImplementar', async (_req, _resp, next) => {});
 
 app.use((err, _req, resp, _next) => {
   resp.status(500).send({ error: 'ERRO INTERNO: ' + err.message });
